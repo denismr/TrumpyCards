@@ -1,0 +1,140 @@
+* {
+  font-family: 'Cutive', serif;
+  user-select: none;
+}
+body {
+  background: black;
+  padding: 0;
+  margin: 0;
+}
+#maincontainer {
+  color:white;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  padding:0;
+}
+button {
+  background-color: #e7e7e7;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+.notice {
+  background: cornflowerblue;
+  color: black;
+  padding: 0.3em 1em;
+  text-align: center;
+  margin: 0;
+}
+.black_card {
+  position: relative;
+  max-width: 66%;
+  border: 0.05em white solid;
+  margin: 0.5em auto;
+  padding: 0.5em;
+  min-height: 4em;
+}
+.card_content {
+  top: 50%;
+  padding:0;
+  margin:0;
+}
+
+.black_hole {
+  text-decoration: underline;
+  color: coral;
+} 
+
+.black_hole:empty {
+  border-bottom: 0.1em coral solid;
+  display: inline-block;
+  min-width: 2em;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  /* overflow-x: scroll; */
+  flex-flow: wrap;
+  justify-content: center;
+  padding:0;
+  margin:0;
+}
+
+li {
+  position: relative;
+  min-width: 10em;
+  max-width: 10em;
+  min-height: 11em;
+  background: white;
+  color: black;
+  margin: 0.3em;
+  display: block;
+}
+
+.del_card {
+  background: #FF4136;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5em;
+  text-align: center;
+  color: #DDDDDD;
+  display: block;
+  font-size: 0.8em;
+}
+
+.card_txt {
+  display: block;
+  padding: 1em;
+}
+
+.card_discard {
+  background: #FF4136;
+  color: white;
+  font-weight: bold;
+}
+
+.card_selected {
+  background: #2ECC40;
+  color: white;
+  font-weight: bold;
+}
+
+.pinfo_by {
+  font-weight: bold;
+  color:white;
+  margin: 0.5em;
+}
+
+.pinfo_score {
+  font-weight: bold;
+  color: rgb(12, 224, 171);
+  margin-right: 0.5em;
+}
+
+.pinfo_score:before {
+  content: "(";
+}
+
+.pinfo_score:after {
+  content: ")";
+}
+
+.pinfo_div {
+  text-align: center;
+  margin: 0 0 1.2em 0;
+}
+
+.pinfo_by_lbl {
+  font-size: 0.7em;
+  font-style: italic;
+}

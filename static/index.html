@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Trumpy Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trumpy Cards">
+  <meta name="author" content="denismr">
+
+  <link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
+
+  <style type="text/css">
+    * {
+      font-family: 'Cutive', serif;
+    }
+    body {
+      background: black;
+    }
+    .container {
+      color:white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    .mainform {
+      position: relative;
+      display:flex;
+      flex-direction: column;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+    }
+    button {
+      background-color: #e7e7e7;
+      border: none;
+      color: black;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-bottom: 1em;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      /* background:brown; */
+    }
+    input[type=text] {
+      background-color: #e7e7e7;
+      color: black;
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-bottom: 1em;
+      display: block;
+      width: 100%;
+      box-sizing:border-box;
+    }
+    input[type=text]::placeholder {
+      font-style: italic;
+    }
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+    .disclaimer {
+      font-size: smaller;
+      color: white;
+    }
+
+    a {
+      color:white;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="container">
+    <h1>Trumpy Cards</h1>
+    <div class="mainform">
+      <div id="div_play_data">
+        <label>Your name</label>
+        <input id="in_play_user" type="text" placeholder="e.g. Donald">
+        <label>Room identifier</label>
+        <input id="in_play_room" type=text placeholder="e.g. Room 69">
+      </div>
+      <button id="btn_play">Play</button>
+      <div id="div_spectate_data">
+        <label>Room identifier</label>
+        <input id="in_spectate_room" type=text placeholder="e.g. Room 69">
+      </div>
+      <button id="btn_spectate">Spectate</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">Trumpy Cards is a Cards Against Humanity clone, which is available at
+  <a href="http://www.cardsagainsthumanity.com/">cardsagainsthumanity.com</a>, where you can buy it
+  or download and print it out yourself. It is distributed under a
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons - Attribution -
+  Noncommercial - Share Alike license</a>.
+  </div>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery.color.min.js"></script>
+
+  <script>
+
+    function HighlightField(field) {
+      const bgc = "background-color";
+      const red = "#f44336";
+      const original_color = field.css(bgc);
+      field.stop().css(bgc, red).animate({"backgroundColor": "#ffffff"});
+    }
+
+    function BtnSpectate2() {
+      let froom = $("#in_spectate_room");
+      froom.val(froom.val().trim());
+      if (froom.val() === "") {
+        HighlightField(froom);
+        return;
+      }
+      let room = froom.val();
+      // window.location.href = `/spectate.html?room=${room}`
+      $(this).text("Mode not available yet :(").prop("disabled", true);
+    }
+
+    function BtnSpectate() {
+      $("#div_spectate_data").show();
+      $("#btn_play").hide();
+      $(this).unbind();
+      $(this).click(BtnSpectate2);
+      $(this).text("Make this game great again!")
+    }
+    
+    function BtnPlay2() {
+      let fuser = $("#in_play_user");
+      let froom = $("#in_play_room");
+      fuser.val(fuser.val().trim());
+      froom.val(froom.val().trim());
+      if (fuser.val() === "" || froom.val() === "") {
+        if (fuser.val() === "") HighlightField(fuser);
+        if (froom.val() === "") HighlightField(froom);
+        return;
+      }
+      let user = encodeURIComponent(fuser.val());
+      let room = encodeURIComponent(froom.val());
+      window.location.href = `/play.html?user=${user}&room=${room}`
+    }
+    
+    function BtnPlay() {
+      $("#div_play_data").show();
+      $("#btn_spectate").hide();
+      $(this).unbind();
+      $(this).click(BtnPlay2);
+    }
+
+    $(document).ready(function() {
+      $("#div_play_data").hide();
+      $("#div_spectate_data").hide();
+      $("#btn_spectate").click(BtnSpectate);
+      $("#btn_play").click(BtnPlay);
+    });
+  </script>
+</body>
+</html>
