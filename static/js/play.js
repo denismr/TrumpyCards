@@ -6,6 +6,11 @@ let player_recovery_code = undefined;
 let ws = undefined;
 let cont = undefined;
 
+setInterval(() => {
+  if (ws === undefined) return;
+  ws.send("ping");
+}, 10000);
+
 function NoticeDiv() {
   return $("<div>").addClass("notice");
 }
@@ -199,6 +204,7 @@ let Handlers = {
 }
 
 function HandleMsg({data: str_msg}) {
+  if (str_msg=="pong") return;
   let msg;
   [{your_score: player_score = player_score,
     recovery_code: player_recovery_code = player_recovery_code,
