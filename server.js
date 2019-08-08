@@ -13,7 +13,7 @@ const fserver = express()
 
 const cCardsPerHand = 7;
 const cMinPlayers = 3;
-const cPlayerReconnectionTimeout = 60000;
+const cPlayerReconnectionTimeout = 90000;
 
 function Shuffle(v) {
   for (let i = v.length - 1; i > 1; i--) {
@@ -287,7 +287,17 @@ class Player {
 
   SetupWs() {
     this.ws.on("message", (msg) => {
-      try {this.Handle(JSON.parse(msg));} catch(e) {console.log(e);}
+      if (msg === "ping") {
+        try {
+          this.ws.send("pong");
+        } catch(e) {
+          console.log(e);
+        }
+      } else try {
+        this.Handle(JSON.parse(msg));
+      } catch(e) {
+        console.log(e);
+      }
     });
 
     const close = () => {
