@@ -135,6 +135,13 @@ li {
 }
 
 .pinfo_by_lbl {
-  font-size: 0.7em;
+  font-size: 75%;
   font-style: italic;
+}
+
+.winner > .pinfo_div > .pinfo_by_lbl:before {
+  content: "🏆";
+  font-style: normal;
+  font-size: 200%;
+  margin-right: 0.5em;
 }
