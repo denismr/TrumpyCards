@@ -16,7 +16,7 @@ const cMinPlayers = 3;
 const cPlayerReconnectionTimeout = 90000;
 
 function Shuffle(v) {
-  for (let i = v.length - 1; i > 1; i--) {
+  for (let i = v.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [v[i], v[j]] = [v[j], v[i]];
   }
