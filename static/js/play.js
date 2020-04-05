@@ -175,6 +175,9 @@ function Shuffle(v) {
 function ShowElection(msg) {
   cont.empty();
   let plist = [];
+  for (let i in msg.election) {
+    msg.election[i].original_index = i;
+  }
   Shuffle(msg.election);
   for (let cand of msg.election) {
     let [p, holes] = BlackPar(msg.black);
@@ -182,16 +185,16 @@ function ShowElection(msg) {
     for (let i = 0; i < cand.length; i++) {
       holes[i].text(cand[i]);
     }
-    plist.push(p);
+    plist.push([p,cand.original_index]);
   }
   if (!msg.istrump) {
     cont.append(NoticeDiv().append($("<p>").text(`Waiting for ${msg.trump} Trump to f* us all.`)));
   } else {
     cont.append(NoticeDiv().append($("<p>").text("You are Trump! Do your thing and choose the worst.")));
     for (let i = 0; i < plist.length; i++) {
-      plist[i].click(() => {
+      plist[i][0].click(() => {
         cont.empty();
-        ws.send(JSON.stringify({winner: i}));
+        ws.send(JSON.stringify({winner: plist[i][1]}));
       });
     }
   }
