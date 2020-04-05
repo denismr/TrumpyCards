@@ -165,9 +165,17 @@ function ShowCampaign_NotTrump(msg, holes) {
   });
 }
 
+function Shuffle(v) {
+  for (let i = v.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [v[i], v[j]] = [v[j], v[i]];
+  }
+}
+
 function ShowElection(msg) {
   cont.empty();
   let plist = [];
+  Shuffle(msg.election);
   for (let cand of msg.election) {
     let [p, holes] = BlackPar(msg.black);
     cont.append(p);
