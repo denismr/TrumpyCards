@@ -11,7 +11,7 @@ All my code in this repository, excluding all dependencies that are not of my au
 
 ## Included third-party dependencies
 
-* The cards (content from `white.txt` and `black.txt`) belong to Cards Against Humanity, and is distrubuted under [Creative Commons BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/), as described in the next session.
+* The cards (content from `white_en.txt` and `black_en.txt`) belong to Cards Against Humanity, and is distrubuted under [Creative Commons BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/), as described in the next session.
 
 * [jquery](https://jquery.com/) (`js/jquery-3.3.1.min.js`) is a third-party dependency and its license can be found in its website.
 
